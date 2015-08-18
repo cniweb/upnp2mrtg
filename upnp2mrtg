@@ -23,7 +23,7 @@
 # 
 #  http://www.ANetzB.de/upnp2mrtg/
 #
-#  $Id: upnp2mrtg,v 2.0.1 2008/02/09 15:37:57 tomcat Exp $
+#  $Id: upnp2mrtg,v 2.0.1 2015/08/19 00:26:31 cniweb Exp $
 
 # default configuration
 HOST="fritz.box"
