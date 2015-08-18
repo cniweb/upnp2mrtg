@@ -23,12 +23,15 @@
 # 
 #  http://www.ANetzB.de/upnp2mrtg/
 #
-#  $Id: upnp2mrtg,v 1.9 2008/02/09 15:37:57 tomcat Exp $
+#  $Id: upnp2mrtg,v 2.0.1 2008/02/09 15:37:57 tomcat Exp $
 
 # default configuration
 HOST="fritz.box"
 PORT="49000"
-NETCAT="netcat"
+NETCAT="nc"
+
+PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/syno/sbin:/usr/syno/bin:/usr/local/sbin:/usr/local/bin:/opt/bin
+export PATH
 
 # if available, read configuration 
 test -f /etc/upnp2mrtg.cfg && . /etc/upnp2mrtg.cfg
@@ -40,8 +43,8 @@ case $NETCAT in
     *) nc="nc" ;;
 esac
 
-ver_txt="upnp2mrtg, version $Revision: 1.9 $
-Copyright (C) 2005-2008 Michael Tomschitz
+ver_txt="upnp2mrtg, version $Revision: 2.0.1 $
+Copyright (C) 2005-2008 Michael Tomschitz and Christian Haeussler
 upnp2mrtg comes with ABSOLUTELY NO WARRANTY. This is free software,
 and you are welcome to redistribute it under certain conditions."
 
@@ -80,7 +83,7 @@ done
 
 # functions
 request_header () {
-echo "POST /upnp/control/$4 HTTP/1.0
+echo "POST /igdupnp/control/$4 HTTP/1.0
 HOST: $1:$2
 CONTENT-LENGTH: $3
 CONTENT-TYPE: text/xml; charset=\"utf-8\"
